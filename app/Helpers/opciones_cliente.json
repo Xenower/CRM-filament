@@ -10,9 +10,7 @@
         "Stateless",
         "Under Age",
         "Invalid number",
-        "Low Potential",
-        "rem",
-        "avemaria"
+        "Low Potential"
     ],
     "estado_cliente": [
         "New",
@@ -29,8 +27,7 @@
         "Recovery",
         "Invalid number",
         "Under Age",
-        "Low Potential",
-        "dormido"
+        "Low Potential"
     ],
     "origenes": [
         "RECOVERY",
