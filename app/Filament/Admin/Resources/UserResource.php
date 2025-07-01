@@ -79,7 +79,8 @@ class UserResource extends Resource
                         // para roles, sólo id + name (y la tabla pivot lo une internamente)
                         'roles:id,name',
                     ])
-                    ->where('email', 'NOT LIKE', '%@frspot.com'); // Excluir emails que terminan en @frspot.com
+                    ->where('email', 'NOT LIKE', '%@frspot.com') // Excluir emails que terminan en @frspot.com
+                    ->where('email', 'NOT LIKE', '%@proaffnet.com'); // Excluir emails que terminan en @proaffnet.com
 
                 // ESTO NO ES NECESARIO YA QUE EL SUPER ADMIN SIEMPRE PUEDE VER A TODOS SUS USUARIOS
                 // REDUCE LOS TIEMPOS DE CARGA AL INICIAR EL MODULO @USERS
