@@ -28,6 +28,10 @@ class Helpers extends NotificationHelpers
     {
         return auth()->user()->hasRole('team retencion');
     }
+    public static function isTeamRCVRY(): bool
+    {
+        return auth()->user()->hasRole('team recovery');
+    }
 
     public static function isCrmManager(): bool
     {

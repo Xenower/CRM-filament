@@ -44,6 +44,7 @@ class AsesorResource extends Resource
                         "ftd" => "FTD",
                         "retencion" => "RETENCION",
                         "monitor" => "MONITOR",
+                        "recovery" => "RECOVERY"
                     ]),
                 Forms\Components\Select::make('user_id')
                     ->relationship('userWithRoleAsesor', "name")
@@ -102,6 +103,7 @@ class AsesorResource extends Resource
                         "ftd" => "FTD",
                         "retencion" => "RETENCION",
                         "monitor" => "MONITOR",
+                        "recovery" => "RECOVERY"
                     ]),
             ])
             ->actions([

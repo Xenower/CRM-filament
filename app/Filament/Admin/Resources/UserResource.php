@@ -117,6 +117,10 @@ class UserResource extends Resource
                     $query->whereHas('asignacion.asesor.user', function ($query) {
                         $query->where('tipo_asesor', '=', 'retencion')->lazy();
                     });
+                } elseif (Helpers::isTeamRCVRY()) {
+                    $query->whereHas('asignacion.asesor.user', function ($query) {
+                        $query->where('tipo_asesor', '=', 'recovery')->lazy();
+                    });
                 }
 
                 return $query;
