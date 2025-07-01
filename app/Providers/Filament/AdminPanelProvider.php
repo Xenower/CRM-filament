@@ -40,7 +40,7 @@ class AdminPanelProvider extends PanelProvider
                 'secondary' => Color::hex('#AB4459'),
             ])
             ->topNavigation()
-            ->brandName('FrSpot')
+            ->brandName('ProAffNet')
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([])
@@ -60,14 +60,14 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->renderHook(
-                PanelsRenderHook::BODY_START,
-                fn () => view('filament.admin.pages.auth.login-extra')->render()
-            )
-            ->renderHook(
-                PanelsRenderHook::BODY_END,
-                fn () => view('filament.admin.pages.auth.login-custom-footer')->render()
-            )
+            // ->renderHook(
+            //     PanelsRenderHook::BODY_START,
+            //     fn () => view('filament.admin.pages.auth.login-extra')->render()
+            // )
+            // ->renderHook(
+            //     PanelsRenderHook::BODY_END,
+            //     fn () => view('filament.admin.pages.auth.login-custom-footer')->render()
+            // )
             ->viteTheme('resources/css/filament/client/theme.css')
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),

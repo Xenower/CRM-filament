@@ -39,7 +39,7 @@ class ClientPanelProvider extends PanelProvider
             ->login(Login::class)
             ->registration(Registration::class)
             ->spa(false)
-            ->brandName('FrSpot')
+            ->brandName('ProAffNet')
             ->discoverResources(in: app_path('Filament/Client/Resources'), for: 'App\\Filament\\Client\\Resources')
             ->discoverPages(in: app_path('Filament/Client/Pages'), for: 'App\\Filament\\Client\\Pages')
             ->pages([
@@ -71,14 +71,14 @@ class ClientPanelProvider extends PanelProvider
                         fn(): bool => request()->is("client/users/*")
                     ),
             ])
-            ->renderHook(
-                PanelsRenderHook::BODY_START,
-                fn () => view('filament.client.pages.auth.login-extra')->render()
-            )
-            ->renderHook(
-                PanelsRenderHook::BODY_END,
-                fn () => view('filament.client.pages.auth.login-custom-footer')->render()
-            )
+            // ->renderHook(
+            //     PanelsRenderHook::BODY_START,
+            //     fn () => view('filament.client.pages.auth.login-extra')->render()
+            // )
+            // ->renderHook(
+            //     PanelsRenderHook::BODY_END,
+            //     fn () => view('filament.client.pages.auth.login-custom-footer')->render()
+            // )
             ->viteTheme('resources/css/filament/client/theme.css');
     }
 }
