@@ -62,9 +62,11 @@ class CuentaClienteResource extends Resource
                 Tables\Columns\TextColumn::make('divisa'),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Cliente')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('user.id')
-                    ->label('ID del cliente'),
+                    ->label('ID del cliente')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('monto_total')
                     ->numeric()
                     ->money('USDT')
