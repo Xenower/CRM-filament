@@ -428,32 +428,32 @@ class UserResource extends Resource
                 /**
                  *  ENVIAR EMAIL DE BIENVENIDAD
                  */
-                BulkAction::make('Enviar mensaje de bienvenida')
-                    ->color('primary')
-                    ->icon('heroicon-o-envelope')
-                    // ->form([
-                    //     Select::make('origenes')
-                    //         ->options(OptionsHelper::getOptions('origenes'))
-                    //         ->required(),
-                    // ])
-                    ->action(function (array $data, Collection $records) {
-                        $records->each(function ($user) use ($data) {
-                            Mail::to($user)->send(new WelcomeUserEmail($user));
-                        });
-                    })
-                    ->after(function () {
-                        // NOTIFICAR QUE LA ASIGNACION FUE EXITOSA
-                        Notification::make()
-                            ->title('Mensajes de bienvenida enviados con exito')
-                            ->success()
-                            ->send();
-                    })
-                    ->deselectRecordsAfterCompletion()
-                    ->visible(function () {
-                        if (Helpers::isSuperAdmin() || Helpers::isCrmManager() || Helpers::isTeamFTD() || Helpers::isTeamRTCN()) {
-                            return true;
-                        }
-                    }),
+                // BulkAction::make('Enviar mensaje de bienvenida')
+                //     ->color('primary')
+                //     ->icon('heroicon-o-envelope')
+                //     // ->form([
+                //     //     Select::make('origenes')
+                //     //         ->options(OptionsHelper::getOptions('origenes'))
+                //     //         ->required(),
+                //     // ])
+                //     ->action(function (array $data, Collection $records) {
+                //         $records->each(function ($user) use ($data) {
+                //             Mail::to($user)->send(new WelcomeUserEmail($user));
+                //         });
+                //     })
+                //     ->after(function () {
+                //         // NOTIFICAR QUE LA ASIGNACION FUE EXITOSA
+                //         Notification::make()
+                //             ->title('Mensajes de bienvenida enviados con exito')
+                //             ->success()
+                //             ->send();
+                //     })
+                //     ->deselectRecordsAfterCompletion()
+                //     ->visible(function () {
+                //         if (Helpers::isSuperAdmin() || Helpers::isCrmManager() || Helpers::isTeamFTD() || Helpers::isTeamRTCN()) {
+                //             return true;
+                //         }
+                //     }),
             ]);
     }
 
