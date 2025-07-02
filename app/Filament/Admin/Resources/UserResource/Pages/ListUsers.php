@@ -21,8 +21,8 @@ class ListUsers extends ListRecords
         return [
             Actions\CreateAction::make(),
             ImportAction::make()
-              ->importer(UserImporter::class)
-              ->visible(fn()=>Helpers::isSuperAdmin() || auth()->user()->hasRole('leads'))
+                ->importer(UserImporter::class)
+                ->visible(fn()=>Helpers::isSuperAdmin() || Helpers::isRoleLeads())
         ];
     }
     // protected function paginateTableQuery(Builder $query): Paginator

@@ -126,7 +126,16 @@ class UserResource extends Resource
 
                 return $query;
             })
-            ->defaultSort(Helpers::isSuperAdmin() ? 'created_at' : 'cliente.updated_at', Helpers::isSuperAdmin() ? 'desc' : 'asc')
+            ->defaultSort(
+                    // Si es SuperAdmin o tiene rol “leads”, ordenamos por created_at
+                    (Helpers::isSuperAdmin() || Helpers::isRoleLeads())
+                        ? 'created_at'
+                        : 'cliente.updated_at',
+                    // Dirección: desc para SuperAdmin y leads, asc para el resto
+                    (Helpers::isSuperAdmin() || Helpers::isRoleLeads())
+                        ? 'desc'
+                        : 'asc'
+                )
             // paginacion de la tabla
             ->paginated([25, 50, 100])
             ->defaultPaginationPageOption(25)
@@ -417,7 +426,7 @@ class UserResource extends Resource
                     })
                     ->deselectRecordsAfterCompletion()
                     ->visible(function () {
-                        if (Helpers::isSuperAdmin() || Helpers::isCrmManager() || auth()->user()->hasRole('leads')) {
+                        if (Helpers::isSuperAdmin() || Helpers::isCrmManager() || Helpers::isRoleLeads()) {
                             return true;
                         }
                     }),

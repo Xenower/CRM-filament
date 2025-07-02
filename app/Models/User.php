@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Helpers\Helpers;
+use Faker\Extension\Helper;
 use Filament\Forms;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -87,7 +88,7 @@ class User extends Authenticatable implements FilamentUser, HasMedia
                             Forms\Components\Select::make('roles')
                                 ->label('Asignar rol')
                                 ->relationship('roles', 'name', function($query){
-                                    Helpers::isCrmManager() || auth()->user()->hasRole('leads') ? $query->where('name', 'cliente') : $query;
+                                    Helpers::isCrmManager() || Helpers::isRoleLeads() ? $query->where('name', 'cliente') : $query;
                                 })
                                 ->preload()
                                 ->required()
@@ -115,7 +116,7 @@ class User extends Authenticatable implements FilamentUser, HasMedia
                                 ]),
                         ])
                         ->visible(function(){
-                            if(Helpers::isCrmManager() || Helpers::isSuperAdmin() || auth()->user()->hasRole('leads')){
+                            if(Helpers::isCrmManager() || Helpers::isSuperAdmin() || Helpers::isRoleLeads()){
                                 return true;
                             }
                         }),

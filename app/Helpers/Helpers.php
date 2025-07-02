@@ -33,6 +33,11 @@ class Helpers extends NotificationHelpers
         return auth()->user()->hasRole('team recovery');
     }
 
+    public static function isRoleLeads(): bool
+    {
+        return auth()->user()->hasRole('leads');
+    }
+
     public static function isCrmManager(): bool
     {
         return auth()->user()->hasRole(['crm junior','crm master']);
