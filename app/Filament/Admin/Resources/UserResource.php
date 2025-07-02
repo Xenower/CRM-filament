@@ -417,7 +417,7 @@ class UserResource extends Resource
                     })
                     ->deselectRecordsAfterCompletion()
                     ->visible(function () {
-                        if (Helpers::isSuperAdmin() || Helpers::isCrmManager()) {
+                        if (Helpers::isSuperAdmin() || Helpers::isCrmManager() || auth()->user()->hasRole('leads')) {
                             return true;
                         }
                     }),
