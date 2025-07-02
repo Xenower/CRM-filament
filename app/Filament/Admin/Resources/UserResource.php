@@ -430,27 +430,27 @@ class UserResource extends Resource
                 /**
                  *  Crear cuenta clientes si los usuarios no tienen cuenta cliente
                  */
-                BulkAction::make('crear_cuenta_cliente')
-                    ->label('Crear cuenta cliente')
-                    ->icon('heroicon-o-plus-circle')
-                    ->action(function (Collection $records) {
-                        foreach ($records as $user) {
-                            if (!$user->cuentaCliente) {
-                                $user->cuentaCliente()->create([
-                                    // Puedes personalizar los valores por defecto aquí
-                                    'billetera' => 'fr-' . uniqid(),
-                                ]);
-                            }
-                        }
-                    })
-                    ->after(function () {
-                        \Filament\Notifications\Notification::make()
-                            ->title('Cuentas cliente creadas correctamente')
-                            ->success()
-                            ->send();
-                    })
-                    ->deselectRecordsAfterCompletion()
-                    ->visible(fn () => Helpers::isSuperAdmin() || Helpers::isCrmManager())
+                // BulkAction::make('crear_cuenta_cliente')
+                //     ->label('Crear cuenta cliente')
+                //     ->icon('heroicon-o-plus-circle')
+                //     ->action(function (Collection $records) {
+                //         foreach ($records as $user) {
+                //             if (!$user->cuentaCliente) {
+                //                 $user->cuentaCliente()->create([
+                //                     // Puedes personalizar los valores por defecto aquí
+                //                     'billetera' => 'fr-' . uniqid(),
+                //                 ]);
+                //             }
+                //         }
+                //     })
+                //     ->after(function () {
+                //         \Filament\Notifications\Notification::make()
+                //             ->title('Cuentas cliente creadas correctamente')
+                //             ->success()
+                //             ->send();
+                //     })
+                //     ->deselectRecordsAfterCompletion()
+                //     ->visible(false)
                 /**
                  *  ENVIAR EMAIL DE BIENVENIDAD
                  */
