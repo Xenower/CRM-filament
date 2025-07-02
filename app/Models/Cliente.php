@@ -210,11 +210,7 @@ class Cliente extends Model implements HasMedia
                                     'd' => RegisterCuestionaryOptions::OPTION_D->value,
                                 ]),
                             ])
-                            ->visible(function(){
-                                if(Helpers::isSuperAdmin()){
-                                    return true;
-                                }
-                            }),
+                                ->visible(true),
                         Tabs\Tab::make('Documentos subidos')
                             ->schema([
                                 Forms\Components\Grid::make()
@@ -241,11 +237,7 @@ class Cliente extends Model implements HasMedia
                                 Forms\Components\SpatieMediaLibraryFileUpload::make('comprobante_pag')
                                     ->collection('clientes_payment_files'),
                             ])
-                            ->visible(function(){
-                                if(Helpers::isSuperAdmin()){
-                                    return true;
-                                }
-                            }),
+                            ->visible(true),
                     ])
             ];
     }
