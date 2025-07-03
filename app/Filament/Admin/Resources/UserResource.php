@@ -13,6 +13,7 @@ use App\Helpers\OptionsHelper;
 use App\Mail\WelcomeUserEmail;
 use App\Models\User;
 use Attribute;
+use Faker\Extension\Helper;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -354,7 +355,7 @@ class UserResource extends Resource
                     })
                     ->deselectRecordsAfterCompletion()
                     ->visible(function () {
-                        if (Helpers::isSuperAdmin() || Helpers::isCrmManager()) {
+                        if (Helpers::isSuperAdmin() || Helpers::isCrmManager() || Helpers::isRoleLeads()) {
                             return true;
                         }
                     }),
@@ -376,7 +377,7 @@ class UserResource extends Resource
                     })
                     ->deselectRecordsAfterCompletion()
                     ->visible(function () {
-                        if (Helpers::isCrmManager() || Helpers::isSuperAdmin()) {
+                        if (Helpers::isCrmManager() || Helpers::isSuperAdmin() || Helpers::isRoleLeads()) {
                             return true;
                         }
                     }),
@@ -398,12 +399,11 @@ class UserResource extends Resource
                     })
                     ->deselectRecordsAfterCompletion()
                     ->visible(function () {
-                        if (Helpers::isSuperAdmin() || Helpers::isCrmManager()) {
+                        if (Helpers::isSuperAdmin() || Helpers::isCrmManager() || Helpers::isRoleLeads()) {
                             return true;
                         }
                         return false;
                     }),
-
                 /**
                  *  ASIGNAR ORIGEN
                  */
