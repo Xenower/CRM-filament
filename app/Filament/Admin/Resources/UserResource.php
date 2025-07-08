@@ -106,6 +106,9 @@ class UserResource extends Resource
                     $query->whereDoesntHave('asignacion.asesor.user', function ($query) {
                         $query->where('tipo_asesor', '=', 'recovery');
                     });
+                    $query->whereDoesntHave('asignacion.asesor.user', function ($query) {
+                        $query->where('tipo_asesor', '=', 'crm');
+                    });
                 }
 
                 /*
