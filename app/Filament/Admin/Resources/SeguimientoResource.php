@@ -140,7 +140,7 @@ class SeguimientoResource extends Resource
                                 Forms\Components\Select::make('fase_cliente')
                                 ->options(OptionsHelper::faseOptions())
                                     ->label('Fase cliente'),
-                                    Forms\Components\Select::make('asesor_name')
+                                Forms\Components\Select::make('asesor_name')
                                     ->label('Asesor asignado')
                                     ->options(fn() => \App\Models\User::whereHas('asesor')->pluck('name', 'name')) // Muestra solo asesores
                                     ->searchable()
