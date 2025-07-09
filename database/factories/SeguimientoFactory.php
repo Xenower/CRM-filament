@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Asesor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\;
 use App\Models\Seguimiento;
 use App\Models\User;
 
@@ -23,11 +23,11 @@ class SeguimientoFactory extends Factory
     public function definition(): array
     {
         return [
-            'descripción' => $this->faker->text(),
-            'estado' => $this->faker->regexify('[A-Za-z0-9]{20}'),
-            'fase' => $this->faker->regexify('[A-Za-z0-9]{50}'),
-            'user_id' => User::factory(),
-            'asesor_id' => ::factory(),
+            'descripcion' => $this->faker->text(),
+            // 'estado' => $this->faker->regexify('[A-Za-z0-9]{20}'),
+            // 'fase' => $this->faker->regexify('[A-Za-z0-9]{50}'),
+            'user_id' => User::role('cliente')->inRandomOrder()->first()->id ?? User::factory(),
+            'asesor_id' => Asesor::inRandomOrder()->first()->id,
         ];
     }
 }

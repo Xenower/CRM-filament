@@ -45,7 +45,7 @@ class ClienteFactory extends Factory
             // 'doc_soporte' => $this->faker->regexify('[A-Za-z0-9]{50}'),
             // 'archivo_soporte' => $this->faker->text(),
             // 'comprobante_pag' => $this->faker->text(),
-            // 'user_id' => User::factory(),
+            'user_id' => User::factory(),
         ];
     }
 }
