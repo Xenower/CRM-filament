@@ -23,16 +23,16 @@ class DailySeguimentosKpiChartRecovery extends ChartWidget
         $end   = now()->endOfDay();
 
         $asesores = Asesor::query()
-            ->where('tipo_asesor','recovery')
-            ->whereHas('user.roles',fn($q) => $q ->whereIn('name',['asesor','team recovery']))
-            ->with('user:id,name')
-            ->get();
+                ->where('tipo_asesor','recovery')
+                ->whereHas('user.roles',fn($q) => $q->whereIn('name',['asesor', 'team recovery']))
+                ->with('user:id,name')
+                ->get();
         
             $labels = [];
             $data   = [];
             $colors = [];
         
-            foreach ($asesores as $asesor)
+            foreach ($asesores as $asesor){
                 $totalClientes = Seguimiento::query()
                     ->where('asesor_id',$asesor->id)
                     ->whereBetween('created_at',[$start, $end])
@@ -42,7 +42,7 @@ class DailySeguimentosKpiChartRecovery extends ChartWidget
                 $labels[] = $asesor->user->name ?? "Asesor {$asesor->id}";
                 $data[]   = $totalClientes;
                 $colors[] = $totalClientes >= 180 ?'rgba(16,185,129,1)' : 'rgba(239,68,68,1)';
-
+            }
         return [
             'labels'  => $labels,
             'datasets'=>[
