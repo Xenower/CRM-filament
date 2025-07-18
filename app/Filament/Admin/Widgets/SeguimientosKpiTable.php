@@ -79,13 +79,9 @@ class SeguimientosKpiTable extends BaseWidget
                         ->sortable(),
                     Tables\Columns\TextColumn::make('descripcion')
                         ->label('Descripción')
-                        ->searchable()
-                        ->sortable()
                         ->html()
-                        // ->lineClamp(3)
                         ->limit(300)
                         ->wrap(),
-                        
                     Tables\Columns\TextColumn::make('user.cliente.estado_cliente')
                         ->label('Estado cliente')
                         ->badge()
@@ -133,9 +129,8 @@ class SeguimientosKpiTable extends BaseWidget
                             ->toArray();
                         })
                     ->searchable()
-                    ->preload()
-                    ->multiple(),
-            ])
+                    ->preload(),
+            ])->deferFilters()
             ->headerActions([
                 Helpers::renderReloadTableAction(),
             ])
