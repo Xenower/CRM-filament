@@ -1,11 +1,15 @@
 {
+  "public/login-imgs/login-proaff.png": {
+    "file": "assets/login-proaff-C9rcdJMn.png",
+    "src": "public/login-imgs/login-proaff.png"
+  },
   "resources/css/app.css": {
     "file": "assets/app-tn0RQdqM.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/css/filament/client/login.css": {
-    "file": "assets/login-BHf4ukO8.css",
+    "file": "assets/login-BLKYw4QB.css",
     "src": "resources/css/filament/client/login.css",
     "isEntry": true
   },

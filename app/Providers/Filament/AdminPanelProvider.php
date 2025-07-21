@@ -60,10 +60,10 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            // ->renderHook(
-            //     PanelsRenderHook::BODY_START,
-            //     fn () => view('filament.admin.pages.auth.login-extra')->render()
-            // )
+            ->renderHook(
+                PanelsRenderHook::BODY_START,
+                fn () => view('filament.admin.pages.auth.login-extra')->render()
+            )
             // ->renderHook(
             //     PanelsRenderHook::BODY_END,
             //     fn () => view('filament.admin.pages.auth.login-custom-footer')->render()
